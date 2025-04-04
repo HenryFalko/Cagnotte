@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #2c3e50;
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+h3 {
+    color: #3498db;
+    margin: 15px 0;
+}
+
+/* Barre de progression */
+.progress-section {
+    margin-bottom: 30px;
+}
+
+.progress-container {
+    margin-bottom: 20px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#current-amount {
+    font-size: 20px;
+    color: #3498db;
+}
+
+#target-amount {
+    color: #7f8c8d;
+}
+
+.progress-bar-container {
+    height: 20px;
+    background-color: #ecf0f1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.percentage {
+    text-align: right;
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.details {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.details p {
+    margin: 5px 0;
+    color: #7f8c8d;
+}
+
+/* Bouton toggle admin */
+.toggle-admin-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.toggle-admin-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Panel d'administration */
+.admin-panel {
+    display: none;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.buttons-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.add-btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: #27ae60;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+.update-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+.update-btn:hover {
+    background-color: #2980b9;
+}
+
+.target-setting, .date-setting {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* Historique des transactions */
+.transactions-history {
+    margin-top: 20px;
+}
+
+.transaction-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+}
+
+.transaction-item {
+    padding: 15px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-amount {
+    font-weight: bold;
+}
+
+.transaction-amount.positive {
+    color: #2ecc71;
+}
+
+.transaction-amount.negative {
+    color: #e74c3c;
+}
+
+.transaction-participant {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.transaction-date {
+    color: #95a5a6;
+    font-size: 12px;
+}
+
+.delete-transaction {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-transaction:hover {
+    background-color: #c0392b;
+}
+
+/* Boutons d'admin */
+.admin-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.export-btn {
+    background-color: #f39c12;
+    color: white;
+}
+
+.export-btn:hover {
+    background-color: #d35400;
+}
+
+.reset-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.reset-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        margin-top: 15px;
+    }
+    
+    .buttons-group, .admin-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

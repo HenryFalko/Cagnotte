@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Cagnotte</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Notre Cagnotte</h1>
+        
+        <!-- Partie publique - Barre de progression -->
+        <div class="progress-section">
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span id="current-amount">0€</span>
+                    <span id="target-amount">Objectif: 1000€</span>
+                </div>
+                
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                
+                <div class="percentage" id="percentage">0%</div>
+            </div>
+            
+            <div class="details">
+                <p><strong id="participants-count">0</strong> participants</p>
+                <p>Fin de la collecte: <strong id="end-date">15 décembre 2023</strong></p>
+            </div>
+            
+            <button class="toggle-admin-btn" id="toggle-admin-btn">Mode Administration</button>
+        </div>
+        
+        <!-- Partie administration - Caché par défaut -->
+        <div class="admin-panel" id="admin-panel">
+            <h2>Administration de la Cagnotte</h2>
+            
+            <div class="transaction-form">
+                <div class="input-group">
+                    <label for="amount">Montant:</label>
+                    <input type="number" id="amount" placeholder="Montant en €" min="1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="participant">Participant:</label>
+                    <input type="text" id="participant" placeholder="Nom du participant">
+                </div>
+                
+                <div class="buttons-group">
+                    <button id="add-btn" class="btn add-btn">Ajouter</button>
+                    <button id="remove-btn" class="btn remove-btn">Retirer</button>
+                </div>
+            </div>
+            
+            <div class="target-setting">
+                <div class="input-group">
+                    <label for="target">Objectif:</label>
+                    <input type="number" id="target" placeholder="Objectif en €" min="1">
+                </div>
+                <button id="update-target-btn" class="btn update-btn">Mettre à jour l'objectif</button>
+            </div>
+            
+            <div class="date-setting">
+                <div class="input-group">
+                    <label for="end-date-input">Date de fin:</label>
+                    <input type="date" id="end-date-input">
+                </div>
+                <button id="update-date-btn" class="btn update-btn">Mettre à jour la date</button>
+            </div>
+            
+            <!-- Historique des transactions -->
+            <div class="transactions-history">
+                <h3>Historique des transactions</h3>
+                <div class="transaction-list" id="transaction-list">
+                    <!-- L'historique sera inséré ici par JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Boutons d'export et de réinitialisation -->
+            <div class="admin-actions">
+                <button id="export-btn" class="btn export-btn">Exporter les données</button>
+                <button id="reset-btn" class="btn reset-btn">Réinitialiser la cagnotte</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
