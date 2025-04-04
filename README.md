@@ -3,8 +3,6 @@
 ## Description
 Une plateforme web dynamique permettant de suivre en temps réel l'avancement de cagnottes solidaires. Conçue pour afficher de manière élégante et engageante la progression des dons, cette application offre une interface personnalisable qui s'adapte à diverses causes et collectes de fonds.
 
-![Capture d'écran de la cagnotte](screenshot_placeholder.png)
-
 ## Fonctionnalités
 
 - **Affichage en temps réel** des montants collectés
