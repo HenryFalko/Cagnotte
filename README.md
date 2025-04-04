@@ -3,6 +3,8 @@
 ## Description
 Une plateforme web dynamique permettant de suivre en temps réel l'avancement de cagnottes solidaires. Conçue pour afficher de manière élégante et engageante la progression des dons, cette application offre une interface personnalisable qui s'adapte à diverses causes et collectes de fonds.
 
+![Capture d'écran de la cagnotte](screenshot_placeholder.png)
+
 ## Fonctionnalités
 
 - **Affichage en temps réel** des montants collectés
@@ -15,15 +17,32 @@ Une plateforme web dynamique permettant de suivre en temps réel l'avancement de
 
 ## Fichiers du projet
 
-- `index.html` - Structure principale de la page
-- `public-display.css` - Styles et thèmes visuels
-- `public-display.js` - Logique de synchronisation et d'affichage dynamique
+- `public-display.html` - Structure principale de la page d'affichage public
+- `public-display.css` - Styles pour l'affichage public
+- `public-display.js` - Logique pour l'affichage public
+- `admin.html` - Interface d'administration
+- `styles.css` - Styles pour l'interface d'administration
+- `script.js` - Logique pour l'interface d'administration
+
+## Structure du projet
+
+```
+cagnotte-solidaire/
+│
+├── public-display.html # Page publique d'affichage de la cagnotte
+├── public-display.css  # Styles de l'affichage public
+├── public-display.js   # Script de l'affichage public
+│
+├── index.html          # Interface d'administration
+├── styles.css          # Styles de l'interface admin
+└── script.js           # Script de l'interface admin
+```
 
 ## Installation
 
 1. Clonez ce dépôt :
 ```bash
-git clone https://github.com/votre-nom/cagnotte-solidaire.git
+git clone https://github.com/HenryFalko/Cagnotte.git
 ```
 
 2. Ouvrez le dossier du projet :
@@ -31,7 +50,20 @@ git clone https://github.com/votre-nom/cagnotte-solidaire.git
 cd cagnotte-solidaire
 ```
 
-3. Lancez l'application en ouvrant `index.html` dans votre navigateur web.
+3. Pour l'affichage public, ouvrez `public-display.html` dans votre navigateur web.
+4. Pour l'administration, ouvrez `index.html` dans votre navigateur web.
+
+## Utilisation
+
+### Interface publique
+L'interface publique (`public-display.html`) affiche la progression de la cagnotte en temps réel. Elle est conçue pour être partagée avec le public ou intégrée à un site web existant.
+
+### Interface d'administration
+L'interface d'administration (`index.html`) permet de :
+- Configurer les paramètres de la cagnotte
+- Mettre à jour le montant collecté manuellement
+- Modifier l'objectif, la date de fin et d'autres informations
+- Personnaliser l'apparence visuelle
 
 ## Personnalisation
 
@@ -62,20 +94,17 @@ body {
 
 ## Configuration
 
-Pour modifier les paramètres de la cagnotte (objectif, date de fin, titre, etc.), modifiez les valeurs initiales dans le module `DBSync` du fichier `public-display.js` :
+Les paramètres de la cagnotte peuvent être modifiés via l'interface d'administration ou directement dans le fichier `script.js` :
 
 ```javascript
-const DBSync = {
-    data: {
-        currentAmount: 0,
-        targetAmount: 0,
-        participantsCount: 0,
-        endDate: '',
-        causeTitle: 'Notre Cagnotte', // Personnalisez le titre ici
-        // etc.
-    },
-    // ...
-}
+const cagnotteSettings = {
+    currentAmount: 0,
+    targetAmount: 10000,
+    participantsCount: 0,
+    endDate: '2023-12-31',
+    causeTitle: 'Notre Cagnotte Solidaire',
+    // etc.
+};
 ```
 
 ## Intégration avec d'autres services
@@ -87,15 +116,10 @@ Le système est conçu pour être facilement adaptable à différentes API de pa
 - Leetchi
 - etc.
 
-## Contribution
+## Sécurité
 
-Les contributions sont les bienvenues ! N'hésitez pas à soumettre des pull requests ou à signaler des problèmes via les issues GitHub.
+L'interface d'administration n'inclut pas d'authentification par défaut. Pour un déploiement en production, il est fortement recommandé d'ajouter une couche d'authentification sécurisée.
 
-1. Forkez le projet
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/amazing-feature`)
-3. Committez vos changements (`git commit -m 'Ajout d'une fonctionnalité'`)
-4. Poussez vers la branche (`git push origin feature/amazing-feature`)
-5. Ouvrez une Pull Request
 
 ## Licence
 
