@@ -1,10 +1,10 @@
 // Module de gestion des données
 const DB = {
     data: {
-        currentAmount: 450,
-        targetAmount: 1000,
-        participantsCount: 25,
-        endDate: '15 décembre 2023',
+        currentAmount: 0,
+        targetAmount: 10000,
+        participantsCount: 0,
+        endDate: '6 avril 2025',
         transactions: []
     },
     
@@ -28,6 +28,22 @@ const DB = {
         }
     },
     
+    // Ajoutez ces nouvelles méthodes:
+    resetCagnotte() {
+        this.data = {
+            currentAmount: 0,
+            targetAmount: 1000,
+            participantsCount: 0,
+            endDate: this.data.endDate,
+            transactions: []
+        };
+        this.save();
+    },
+    
+    updateEndDate(newDate) {    
+        this.data.endDate = newDate;
+        this.save();
+    },
     addTransaction(amount, participant, type) {
         amount = parseInt(amount);
         
@@ -200,4 +216,77 @@ document.addEventListener('DOMContentLoaded', function() {
     DB.load(); // Charger les données sauvegardées
     updateProgressBar();
     renderTransactions();
+    
+    // Ajoutez ce code pour la réinitialisation
+    const resetBtn = document.getElementById('reset-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            if (confirm('Êtes-vous sûr de vouloir réinitialiser la cagnotte ? Cette action est irréversible.')) {
+                DB.resetCagnotte();
+                updateProgressBar();
+                renderTransactions();
+                alert('La cagnotte a été réinitialisée avec succès.');
+            }
+        });
+    }
+    
+    // Ajoutez ce code pour la mise à jour de la date
+    const dateInput = document.getElementById('end-date-input'); // Modifié pour correspondre à votre HTML
+    const updateDateBtn = document.getElementById('update-date-btn');
+    
+    if (dateInput && updateDateBtn) {
+        // Pour un input de type date, vous devrez peut-être formater la date
+        // Si DB.data.endDate est au format "6 avril 2025", nous devons le convertir en "2025-04-06"
+        try {
+            // Convertir la date textuelle en objet Date puis en format YYYY-MM-DD pour l'input date
+            const dateParts = DB.data.endDate.split(' ');
+            
+            // Conversion simplifiée - à adapter selon votre format exact
+            const monthMap = {
+                'janvier': '01', 'février': '02', 'mars': '03', 'avril': '04',
+                'mai': '05', 'juin': '06', 'juillet': '07', 'août': '08',
+                'septembre': '09', 'octobre': '10', 'novembre': '11', 'décembre': '12'
+            };
+            
+            const day = dateParts[0].padStart(2, '0');
+            const month = monthMap[dateParts[1].toLowerCase()];
+            const year = dateParts[2];
+            
+            if (day && month && year) {
+                dateInput.value = `${year}-${month}-${day}`;
+            }
+        } catch (e) {
+            console.warn("Impossible de formater la date pour l'input:", e);
+        }
+        
+        updateDateBtn.addEventListener('click', function() {
+            if (dateInput.value) {
+                // Convertir la date du format YYYY-MM-DD au format texte
+                const dateObj = new Date(dateInput.value);
+                const day = dateObj.getDate();
+                
+                // Tableau des mois en français
+                const monthNames = [
+                    'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+                    'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+                ];
+                const month = monthNames[dateObj.getMonth()];
+                const year = dateObj.getFullYear();
+                
+                const formattedDate = `${day} ${month} ${year}`;
+                
+                DB.updateEndDate(formattedDate);
+                alert('La date d\'échéance a été mise à jour.');
+                
+                // Mettre à jour l'affichage si nécessaire
+                const dateDisplay = document.getElementById('end-date-display');
+                if (dateDisplay) {
+                    dateDisplay.textContent = formattedDate;
+                }
+            } else {
+                alert('Veuillez sélectionner une date.');
+            }
+        });
+    }
 });
+
